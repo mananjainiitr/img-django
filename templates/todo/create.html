@@ -1,0 +1,49 @@
+<html>
+<head>
+        <style>
+            .h1{
+                background-color:lightyellow;
+                padding:20px;
+                color:green;
+
+            
+            }
+            .sub{
+                background-color:lightblue;
+                border-style: solid;
+                width:50vw;
+                padding : 20px;
+                justify-content:centre;
+            }
+            body{
+                background-color:lightyellow;
+            }
+        </style>
+
+</head>
+<body>
+{% if error %}
+<div class="h1"><span>{{error}}</span></div>
+{% endif %}
+<div class = "sub">
+<form action="/todo/item_create/" method="post">
+    {% csrf_token %}
+    <fieldset>
+        <h1>Create New List</h1>
+        <span>Listname</span><br>
+        <input type="text" name="name" id="name" value = {{todolist}}><br>
+        <span>todo item</span><br>
+        <input type="tittle" name="title" id="title" required><br>
+        <span>due date of event</span><br>
+        <input type="date" name="date" id="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" required><br>
+        {% comment %} <input type="date" name="date" ><br> {% endcomment %}
+        <span>due time of event</span><br>
+        <input type="time" name="time" id="time" required><br>
+        <input type="submit">
+    </fieldset>
+
+</form>
+</div>
+<a href="#" onclick="javascript:window.history.back(-1);return false;"><button>Back</button></a>
+</body>
+</html>

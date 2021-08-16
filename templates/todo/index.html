@@ -1,0 +1,51 @@
+<html>
+<head>
+<style>
+body{
+    background-color:lightyellow;
+}
+.flex{
+    display: flex;
+    background-color:lightblue;
+    width : 50vw;
+    margin :10px;
+    justify-content:space-between;
+}
+.flex1{
+    
+    margin: 10px;
+  padding: 20px;
+  font-size: 30px
+}
+.flex2{
+    margin: 10px;
+  padding: 20px;
+  font-size: 30px
+}
+</style>
+</head>
+<body>
+<a href = "/todo/createlist"><button>Add</button></a>
+{% if todolists %}
+
+
+    <ul>
+        {% for todolist in todolists %}
+        <form method = "post" action ="/todo/delete/">
+        {% csrf_token %}
+        <div class = "flex">
+        <div class = "flex1">
+        <li><a href="/todo/{{todolist.id}}">{{todolist.list_name}}</a></li>
+        </div>
+        <div class = "flex2" >
+        <button value={{todolist.list_name}} name="name">Delete</button>
+        </div>
+        </div>
+        </form>
+
+        {% endfor %}
+    </ul>
+
+{% endif %}
+</body>
+</html>
