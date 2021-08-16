@@ -76,28 +76,12 @@
                 
              </ul>
 
-         {% comment %} <div class="h1"><h1> You can update your Todo here </h1></div>
-                <div class = "sub">
-                <form method=post action="/todo/update/">
-                {% csrf_token %}
-                <input type="date" id="date" name="date"  value=""><br><br>
-                <input type="text" id="title" name="title" value={{item.title}}><br><br>
-                <input type="time" id="time" name="time" value={{item.due_tim}}><br><br>
-                <button id = "name" name = "name" value = {{todolist.list_name}}>submit</button>
-                </form>
-                </div> {% endcomment %}
-                {% comment %} <li><h2>{{item.title}}</h2></li>
-                <li><h2>{{item.due_date}}</h2></li>
-                <li><h2>{{item.due_tim}}</h2></li>
-                
-                <li><h2>Done <input type = "checkbox" value = {{item.checked}}></h2></li> {% endcomment %}
-
+        
                 
                 
                 {% endfor %}
             <a href = "/todo/">back</a>
-            {% comment %} <a href="#" onclick="javascript:window.history.back(-1);return false;"><button>Back</button></a> {% endcomment %}
-
+           
     </body>
 </html>
 
