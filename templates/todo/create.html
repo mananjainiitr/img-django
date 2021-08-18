@@ -29,17 +29,18 @@
 <form action="/todo/item_create/" method="post">
     {% csrf_token %}
     <fieldset>
-        <h1>Create New List</h1>
-        <span>Listname</span><br>
-        <input type="text" name="name" id="name" value = {{todolist}}><br>
+        <h1>Create New item</h1>
+        
+        {% comment %} <span name="name" id="name" value = {{todolist}}>{{todolist}}</span> {% endcomment %}
+        {% comment %} <input type="text" name="name" id="name" value = {{todolist}}><br> {% endcomment %}
         <span>todo item</span><br>
         <input type="tittle" name="title" id="title" required><br>
         <span>due date of event</span><br>
-        <input type="date" name="date" id="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" required><br>
+        <input type="datetime-local" name="date" id="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" required><br>
         {% comment %} <input type="date" name="date" ><br> {% endcomment %}
         <span>due time of event</span><br>
-        <input type="time" name="time" id="time" required><br>
-        <input type="submit">
+        {% comment %} <input type="time" name="time" id="time" required><br> {% endcomment %}
+        <button name="name" id="name" value = {{todolist.id}} >Add item</button>
     </fieldset>
 
 </form>
