@@ -2,6 +2,11 @@
 <html>
     <head>
         <style>
+            .check{
+                width:50px;
+                height:50px;
+                
+            }
             .h1{
                
                 padding:20px;
@@ -15,13 +20,18 @@
                 flex-wrap:wrap;
                 
                 width:70vw;
-                padding : 20px;
+                
                 justify-content:centre;
             }
           
             li{
+                text-decoration : none;
                 background-color:white;
                 width:70vw;
+            }
+            ul{
+                list-decoration:none;
+                padding-inline-start: 0px;
             }
             .one{
                 width:25vw;
@@ -33,7 +43,7 @@
 
             }
             .two{
-                width:10vw;
+                width:15vw;
                 overflow-y:hidden;
                 height:50px;
                 border-style: solid;
@@ -51,14 +61,19 @@
             .but>a>button{
                 margin-left:10px;
                 height : 50px;
+                height:50px;
                 
+            }
+            button{
+                height:50px;
+                margin-left:10px;
             }
       
         </style>
 
     </head>
     <body>
-        <form method="post" action = "/todo/create/" >{% csrf_token %}<button value ={{todolist.list_name}} id = "todo"name = "todo">Add</button></form>
+        <a href='create/'<button value ={{todolist.id}} id = "todo"name = "todo">Add Item</button></a>
          {% comment %} <a href = "/todo/create"><button>Add</button></a> {% endcomment %}
 
         <div class="h1"><h1>{{todolist.list_name}}</h1></div>
@@ -68,20 +83,41 @@
                
                 <li> <div class = "sub"><div class = "one"><h2>{{item.title}}</h2></div>
                 <div class = "two"><h2>{{item.due_date}}</h2></div>
-                <div class = "three"><h2>{{item.due_tim}}</h2></div>
-                
-                <div class="but"><form method="post" action = "todo/updatetodo/" >{% csrf_token %}<button name="upd" value = {{item.title}}>update</button></form></div><div class="but"><form method="post" action = "todo/deletetodo/" >{% csrf_token %}<button value= {{item.title}} name = 'title'>delete</button></form></div></div>
+                {% comment %} <div class = "three"><h2>{{item.due_tim}}</h2></div> {% endcomment %}
+                {% if item.checked%}
+                <input class = "check" type = "checkbox" checked = True>
+                {% else %}
+                <input class = "check"type = "checkbox" >
+                {% endif %}
+
+                <div class="but"><a href = "{{item.id}}/update/" ><button name="upd" value = {{item.id}}>update</button></a></div><div class="but"><a href = "{{item.id}}/deletetodo/" ><button value= {{item.id}} name = 'title'>delete</button></a></div></div>
                 
                 </li>
                 
              </ul>
 
-        
+         {% comment %} <div class="h1"><h1> You can update your Todo here </h1></div>
+                <div class = "sub">
+                <form method=post action="/todo/update/">
+                {% csrf_token %}
+                <input type="date" id="date" name="date"  value=""><br><br>
+                <input type="text" id="title" name="title" value={{item.title}}><br><br>
+                <input type="time" id="time" name="time" value={{item.due_tim}}><br><br>
+                <button id = "name" name = "name" value = {{todolist.list_name}}>submit</button>
+                </form>
+                </div> {% endcomment %}
+                {% comment %} <li><h2>{{item.title}}</h2></li>
+                <li><h2>{{item.due_date}}</h2></li>
+                <li><h2>{{item.due_tim}}</h2></li>
+                
+                <li><h2>Done <input type = "checkbox" value = {{item.checked}}></h2></li> {% endcomment %}
+
                 
                 
                 {% endfor %}
             <a href = "/todo/">back</a>
-           
+            {% comment %} <a href="#" onclick="javascript:window.history.back(-1);return false;"><button>Back</button></a> {% endcomment %}
+
     </body>
 </html>
 
