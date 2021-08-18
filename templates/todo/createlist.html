@@ -35,10 +35,10 @@
         <span>todo item</span><br>
         <input type="tittle" name="title" id="title" required><br>
         <span>due date of event</span><br>
-        <input type="date" name="date" id="date" placeholder="dd-mm-yyyy" value="" min="1997-01-01" max="2030-12-31" required><br>
+        <input type="datetime-local" name="date" id="date" required><br>
         {% comment %} <input type="date" name="date" ><br> {% endcomment %}
         <span>due time of event</span><br>
-        <input type="time" name="time" id="time" required><br>
+        {% comment %} <input type="time" name="time" id="time" required><br> {% endcomment %}
         <input type="submit">
     </fieldset>
 
