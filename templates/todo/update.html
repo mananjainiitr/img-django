@@ -3,10 +3,13 @@
                 <form method=post action="/todo/update/">
                 {% csrf_token %}
                 <input type = "hidden" id="item" name = "item" value={{todoitem}}>
-                <input type="date" id="date" name="date"  value=""><br><br>
-                <input type="text" id="title" name="title" value={{todoitem}}><br><br>
-                <input type="time" id="time" name="time" value=""><br><br>
-                
+                <input type="datetime-local" id="date" name="date"  value=""><br><br>
+                <input type="text" id="title" name="title" value={{itemtitle}}><br><br>
+                {% comment %} <input type="time" id="time" name="time" value=""><br><br> {% endcomment %}
+                <span> mark </span>
+                <input type = 'radio'  value=True name ="check" required>
+                <span> unmark </span>
+                <input type = 'radio'  value=False name="check" required><br>
                 <button id = "name" name = "name" value = {{todolist}}>submit</button>
                 </form>
                 </div>
