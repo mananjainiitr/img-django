@@ -20,4 +20,4 @@ urlpatterns = [
     path('todo/', include('todo.urls')),
     path('admin/', admin.site.urls),
 ]
-handler404 = 'todo.views.error_404_view'
+# handler404 = 'todo.views.error_404_view'
